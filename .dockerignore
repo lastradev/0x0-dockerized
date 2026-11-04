@@ -1,3 +1,13 @@
 data/
 .git/
 .gitignore
+node_modules/
+.dockerignore
+*.log*
+.env*
+coverage/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/

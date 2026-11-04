@@ -4,16 +4,13 @@ THE NULL POINTER
 {% set fhost_url = url_for("fhost", _external=True).rstrip("/") %}
 HTTP POST files here:
     curl -F'file=@yourfile.png' {{ fhost_url }}
-You can also POST remote URLs:
-    curl -F'url=http://example.com/image.jpg' {{ fhost_url }}
-Or you can shorten URLs:
-    curl -F'shorten=http://example.com/some/long/url' {{ fhost_url }}
 
-File URLs are valid for at least 30 days and up to a year (see below).
-Shortened URLs do not expire.
+Uploaded file URLs are valid for at least 30 days and up to a year (see below).
 {% set max_size = config["MAX_CONTENT_LENGTH"]|filesizeformat(True) %}
 Maximum file size: {{ max_size }}
-Not allowed: {{ config["FHOST_MIME_BLACKLIST"]|join(", ") }}
+Not allowed: Windows executables and Java class/archive files.
+HTML, SVG, XML, and JavaScript are downloads only (not live pages).
+Uploaded files are not scanned for malware.
 
 
 FILE RETENTION PERIOD
